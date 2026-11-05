@@ -14,7 +14,7 @@ const ICONS: Record<string, React.ReactNode> = {
   rg: <svg className="ic w2 g2" viewBox="0 0 88 60" style={{ width: "calc(var(--s)*.9)", height: "auto" }}><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" strokeWidth="6" /><circle cx="58" cy="30" r="24" fill="none" stroke="currentColor" strokeWidth="6" /></svg>,
 };
 type Item = string | [string, string, string?];
-const SEQ: Item[] = [["Open", "g0"], ["Nexus,", "g1", "o"], "play", ["add", "g2"], ["one", "g1"], ["task,", "g1", "o"], "sw", ["start", "g1"], ["a", "g1"], ["focus session,", "g1", "r"], "sp", ["and", "g2"], ["see", "g1"], ["how", "g1"], ["long", "g1"], ["real work", "g1", "r"], ["actually", "g1"], ["takes.", "g1"], "st", ["No signup.", "g2", "o"], "wv", ["Web", "g1"], ["and", "g1"], ["mobile.", "g1"], "rg", ["Done.", "g1", "r"]];
+const SEQ: Item[] = [["Open", "g0"], ["doMore,", "g1", "o"], "play", ["add", "g2"], ["one", "g1"], ["task,", "g1", "o"], "sw", ["start", "g1"], ["a", "g1"], ["focus session,", "g1", "r"], "sp", ["and", "g2"], ["see", "g1"], ["how", "g1"], ["long", "g1"], ["real work", "g1", "r"], ["actually", "g1"], ["takes.", "g1"], "st", ["No signup.", "g2", "o"], "wv", ["Web", "g1"], ["and", "g1"], ["mobile.", "g1"], "rg", ["Done.", "g1", "r"]];
 export default function Ticker() {
   const root = useRef<HTMLElement>(null), trk = useRef<HTMLDivElement>(null), pin = useRef<HTMLDivElement>(null);
   useGSAP(() => {
@@ -27,7 +27,7 @@ export default function Ticker() {
   }, { scope: root });
   return (
     <section ref={root} className="tape overflow-hidden border-y-[1.5px] border-ln bg-dk text-dkfg" aria-label="Brand statement">
-      <p className="sr-only">Open Nexus, add one task, start a focus session, and see how long real work actually takes. No signup. Web and mobile. Done.</p>
+      <p className="sr-only">Open doMore, add one task, start a focus session, and see how long real work actually takes. No signup. Web and mobile. Done.</p>
       <div ref={pin} className="pin relative flex h-screen min-h-[520px] items-center">
         <div className="mono absolute left-6 top-6 !text-dkfg opacity-70">Keep scrolling →</div>
         <div ref={trk} aria-hidden className="flex items-center whitespace-nowrap px-[8vw] will-change-transform">

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { APP_URL } from "@/lib/content";
-export default function AppLink({ className = "btn", children = "Open Nexus" }: { className?: string; children?: React.ReactNode }) {
+export default function AppLink({ className = "btn", children = "Open doMore" }: { className?: string; children?: React.ReactNode }) {
   const [msg, setMsg] = useState(false);
   if (APP_URL) return <a href={APP_URL} className={className}>{children}</a>;
   return (

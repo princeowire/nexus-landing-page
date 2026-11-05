@@ -3,7 +3,16 @@ import HeroTimer from "./HeroTimer";
 import Reveal from "./Reveal";
 import { FAQ, STEPS } from "@/lib/content";
 
-const Logo = () => <a href="#top" className="flex items-center gap-2 font-display text-[1.4rem] font-extrabold no-underline"><i className="logo-i inline-block size-3.5 bg-acc" />Nexus</a>;
+const Logo = () => (
+  <a href="#top" className="flex items-center text-red gap-2 font-display text-[1.4rem] font-extrabold no-underline" aria-label="doMore home">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcSet="/assets/logo-dark.png" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/assets/logo-light.png" alt="" width={600} height={481} className="h-9 w-auto" />
+    </picture>
+    doMore
+  </a>
+);
 
 export function Header() {
   return (
@@ -34,11 +43,11 @@ export function Hero() {
       <div className="w relative z-[1] grid items-center gap-9 md:grid-cols-[1.05fr_.95fr] md:gap-14">
         <div>
           <h1 className="up text-[clamp(2.4rem,6vw,4.4rem)] font-extrabold">Add a task. Start a session. <span className="hl">Skip the setup.</span></h1>
-          <p className="up mb-[30px] mt-[22px] max-w-[34ch] text-[1.2rem] text-mut [animation-delay:.12s]">Nexus is a focus to-do list that needs no signup, shows how long your tasks really take, and keeps your session in step across web and mobile.</p>
+          <p className="up mb-[30px] mt-[22px] max-w-[34ch] text-[1.2rem] text-mut [animation-delay:.12s]">doMore is a focus to-do list that needs no signup, shows how long your tasks really take, and keeps your session in step across web and mobile.</p>
           <div className="up flex flex-wrap gap-3.5 [animation-delay:.24s]"><AppLink /><a href="#how" className="btn btn-ghost">See how it works</a></div>
           <p className="up mt-[18px] text-sm text-mut [animation-delay:.36s]">No account required to start. Link one later only if you want sync.</p>
         </div>
-        <div role="img" aria-label="Example Nexus screen: a task list with planned and used sessions, and a running timer" className="border-[1.5px] border-ln bg-surf shadow-[8px_8px_0_var(--ln)]">
+        <div role="img" aria-label="Example doMore screen: a task list with planned and used sessions, and a running timer" className="border-[1.5px] border-ln bg-surf shadow-[8px_8px_0_var(--ln)]">
           <div className="mono flex justify-between border-b-[1.5px] border-ln px-3.5 py-2.5"><span>Today</span><span>Example data</span></div>
           <div className="p-[18px]">
             <div className="-mx-3 mb-1 grid grid-cols-[1fr_auto] gap-x-3 gap-y-1 bg-dk p-3 text-dkfg"><b className="font-semibold">Write project spec</b><Pips p={1} x={2} /><span className="mono !text-dkfg opacity-70">Planned 1 · Used 3</span></div>
@@ -56,7 +65,10 @@ export function Strip() {
   const t = "No signup ✚ Add a task ✚ Start a session ✚ See what it really took ✚ Web and mobile ✚ ";
   return (
     <>
-      <div className="mono overflow-hidden border-t-[1.5px] border-ln bg-dk !text-dkfg" aria-hidden><div className="mq inline-block whitespace-nowrap py-3 !text-dkfg">{t.repeat(8)}&nbsp;</div></div>
+      <div className="relative h-[120px] overflow-hidden border-t-[1.5px] border-ln md:h-[200px]" aria-hidden>
+        <div className="mono absolute left-[-10%] top-1/2 w-[130%] -translate-y-1/2 rotate-[-4deg] overflow-hidden bg-dk !text-dkfg [transform-origin:25%_50%]"><div className="mq inline-block whitespace-nowrap py-3 !text-dkfg">{t.repeat(8)}&nbsp;</div></div>
+        <div className="mono absolute left-[-10%] top-1/2 w-[130%] -translate-y-1/2 rotate-[4deg] overflow-hidden bg-acc !text-accfg [transform-origin:25%_50%]"><div className="mq-r inline-block whitespace-nowrap py-3 !text-accfg">{"Web and mobile ✚ See what it really took ✚ Start a session ✚ Add a task ✚ No signup ✚ ".repeat(8)}&nbsp;</div></div>
+      </div>
       <div className="border-y-[1.5px] border-ln bg-surf"><div className="w grid md:grid-cols-3">
         {[["No signup wall", "Open it and start"], ["Actual time, not guesses", "Per task, per session"], ["One state everywhere", "Web and mobile"]].map(([a, b], i) => (
           <Reveal key={a} delay={i * 0.1} className="px-6 py-[22px] md:[&:not(:first-child)]:border-l-[1.5px] border-ln max-md:[&:not(:first-child)]:border-t-[1.5px]"><b className="block font-semibold">{a}</b><span className="mono">{b}</span></Reveal>
@@ -78,17 +90,17 @@ export function Features() {
   return (
     <section id="features" className="ring-f sq-f relative overflow-hidden py-[60px] md:py-[88px]"><div className="w relative z-[1]">
       <h2 className="max-w-[16ch] text-[clamp(1.9rem,4vw,3rem)] font-extrabold">Built for the moment you decide to work</h2>
-      <Row k="A" title="You land on a list, not a dashboard" text="Most focus apps ask you to create an account, pick settings and tour a dashboard before you work. Nexus opens straight to your task list with a start button. Add a task, press start.">
+      <Row k="A" title="You land on a list, not a dashboard" text="Most focus apps ask you to create an account, pick settings and tour a dashboard before you work. doMore opens straight to your task list with a start button. Add a task, press start.">
         <div className="card"><div className="mono">Time to first session</div>
           {[["Open", "1"], ["Add task", "2"], ["Start", "3"]].map(([a, n], i) => <div key={a} className="my-3 grid grid-cols-[90px_1fr] items-center gap-2.5"><span>{a}</span><span className={`mono ${i === 2 ? "!text-acc" : ""}`}>{n}</span></div>)}
           <div className="mono mt-2.5">Three actions. No sign-up step.</div></div>
       </Row>
-      <Row rev k="B" title="See why your plans keep running over" text="Nexus records how long each task actually takes and how many sessions it needed. Set against your own estimate, the gap shows where you consistently underestimate, so the next plan is based on evidence.">
+      <Row rev k="B" title="See why your plans keep running over" text="doMore records how long each task actually takes and how many sessions it needed. Set against your own estimate, the gap shows where you consistently underestimate, so the next plan is based on evidence.">
         <div className="card"><div className="mono">Planned vs actual sessions · example</div>
           {[["Spec", 30, 90], ["Bug fix", 40, 60]].map(([n, p, a]) => <div key={n} className="my-3 grid grid-cols-[90px_1fr] items-center gap-2.5"><span>{n}</span>{bar(p as number, a as number)}</div>)}
           <div className="mono mt-2.5">Black: planned · Red: actual</div></div>
       </Row>
-      <Row k="C" title="Pick up on the other device where you left off" text="Your task, running session, break state and history behave the same on web and mobile. If your connection drops, Nexus recovers when it returns. Accounts are optional and only needed to link devices.">
+      <Row k="C" title="Pick up on the other device where you left off" text="Your task, running session, break state and history behave the same on web and mobile. If your connection drops, doMore recovers when it returns. Accounts are optional and only needed to link devices.">
         <div className="card"><table className="w-full border-collapse text-[15px]"><thead><tr>{["Carries across", "Web", "Mobile"].map((h) => <th key={h} className="mono border-b border-ln px-1.5 py-2.5 text-left">{h}</th>)}</tr></thead>
           <tbody>{["Tasks", "Active session", "Break state", "History"].map((r) => <tr key={r}><td className="border-b border-ln px-1.5 py-2.5 font-medium">{r}</td><td className="border-b border-ln px-1.5 py-2.5 font-bold text-acc">✓</td><td className="border-b border-ln px-1.5 py-2.5 font-bold text-acc">✓</td></tr>)}</tbody></table></div>
       </Row>
@@ -115,11 +127,11 @@ export function HowItWorks() {
 
 export function Faq() {
   return (
-    <section id="faq" className="relative overflow-hidden flex item-center py-[60px] md:py-[88px]"><div className="w relative z-[1]">
+    <section id="faq" className="relative overflow-hidden py-[60px] md:py-[88px] flex items-center justify-center"><div className="w relative z-[1]">
       <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-extrabold">Questions, answered</h2>
       <div className="mt-9 max-w-[760px] border-b-[1.5px] border-ln">
         {FAQ.map(([q, a]) => (
-          <details key={q} className="border-t-[1.5px] border-ln"><summary className="flex w-[632px] min-h-12 cursor-pointer justify-between gap-4 py-[18px] text-[1.1rem] font-semibold">{q}</summary><p className="max-w-[62ch] pb-5 text-mut">{a}</p></details>
+          <details key={q} className="border-t-[1.5px] border-ln"><summary className="w-[760px] flex min-h-12 cursor-pointer justify-between gap-4 py-[18px] text-[1.1rem] font-semibold">{q}</summary><p className="max-w-[62ch] pb-5 text-mut">{a}</p></details>
         ))}
       </div>
     </div></section>
@@ -133,7 +145,7 @@ export function FinalCta() {
       <div className="w relative z-[1] grid items-center gap-12 md:grid-cols-[1.1fr_.9fr]">
         <Reveal>
           <h2 className="max-w-[15ch] text-[clamp(1.9rem,4vw,3rem)] font-extrabold">Your first session is a few taps away</h2>
-          <p className="mb-[30px] mt-[18px] max-w-[46ch] text-[1.15rem]">Open Nexus, add the one thing you need to finish, and start. You can see how long it really took when you are done.</p>
+          <p className="mb-[30px] mt-[18px] max-w-[46ch] text-[1.15rem]">Open doMore, add the one thing you need to finish, and start. You can see how long it really took when you are done.</p>
           <AppLink className="btn !border-accfg !bg-accfg !text-acc !shadow-[4px_4px_0_var(--dk)]" />
         </Reveal>
         <svg viewBox="0 0 360 400" role="img" aria-label="Illustration of a phone showing a task, a running timer and a Start button being tapped" className="h-auto w-full max-w-[380px] justify-self-center overflow-visible [&_text]:font-mono [&_text]:text-xs">
@@ -165,7 +177,7 @@ export function Footer() {
         {[["#features", "Features"], ["#how", "How it works"], ["#faq", "FAQ"]].map(([h, t]) => <li key={h}><a href={h}>{t}</a></li>)}
         <li className="text-mut">Privacy policy (not yet published)</li><li className="text-mut">Terms (not yet published)</li>
       </ul>
-      <div className="text-mut">© 2026 Nexus</div>
+      <div className="text-mut">© 2026 doMore</div>
     </div></footer>
   );
 }
